@@ -15,7 +15,11 @@ class Factory
       throw error
 
     constructor = @getConstructor name
-    return new constructor(properties)
+    object = new constructor properties
+    @decorate object
+    return object
+
+  decorate: (object) -> null
 
   register: (constructors = {}) ->
     @constructors[name] = constructor for own name, constructor of constructors

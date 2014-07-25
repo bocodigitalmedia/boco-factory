@@ -65,15 +65,15 @@ If you attempt to construct an object using an unregistered name, a `Constructor
 
 You may want to extend the Factory class to perform custom construction of your objects. Let's create a new Factory class that generates an identity for each object it constructs.
 
+The `decorate` method is called *after* the object is constructed. By default, it does nothing. We can override it to set the identity on objects we construct.
+
     class IdentifyingFactory extends Factory
 
       generateId: ->
         @lastId = if @lastId? then @lastId + 1 else 1
 
-      construct: (properties = {}) ->
-        object = super(properties)
+      decorate: (object) ->
         object.id = @generateId() unless object.id?
-        return object
 
 Now, let's create an instance of this factory class and register our constructors.
 
