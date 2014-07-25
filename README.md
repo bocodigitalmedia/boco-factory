@@ -48,6 +48,18 @@ Now that we have registered some constructors, we can use our factory to create 
     assert user instanceof User
     assert.equal "john.doe", user.name
 
+## Unregistered constructors
+
+    ConstructorNotRegistered = BocoFactory.Errors.ConstructorNotRegistered
+
+If you attempt to construct an object using an unregistered name, a `ConstructorNotRegistered` error will be thrown.
+
+    constructUnregistered = -> factory.construct 'Foo'
+
+    assert.throws constructUnregistered, (error) ->
+      assert error instanceof ConstructorNotRegistered
+      assert.equal "Foo", error.payload.name
+      return true
 
 # Custom factories
 
