@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "ConstructorUndefined.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "coffee/errors/ConstructorUndefined.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,KAAA,kCAAA;KAAA;oSAAA;;CAAA,CAAA,CAAe,IAAA,KAAf,IAAe;;CAAf,CAEM;CACJ;;;;;CAAA;;CAAA,EAAa,MAAA,EAAb;;CACG,EAAW,CAAX,IAAD;QAAA;CADW,YAEX,uCAAA;CAFF,IAAa;;CAAb;;CADiC;;CAFnC,CAOA,CAAiB,GAAX,CAAN,aAPA;CAAA"
+}

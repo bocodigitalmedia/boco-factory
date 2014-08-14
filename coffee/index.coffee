@@ -1,2 +1,2 @@
-exports.Factory = require './Factory'
+exports.TypeFactory = require './TypeFactory'
 exports.Errors = require './errors'

@@ -1,1 +1,2 @@
-exports.ConstructorNotRegistered = require './ConstructorNotRegistered'
+exports.FactoryError = require './FactoryError'
+exports.ConstructorUndefined = require './ConstructorUndefined'

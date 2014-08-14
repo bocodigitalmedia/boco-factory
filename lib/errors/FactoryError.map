@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "FactoryError.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "coffee/errors/FactoryError.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,KAAA,yBAAA;KAAA;oSAAA;;CAAA,CAAA,CAAc,IAAA,IAAd,CAAc;;CAAd,CAEM;CAAN;;;;;CAAA;;CAAA;;CAA2B;;CAF3B,CAIA,CAAiB,GAAX,CAAN,KAJA;CAAA"
+}

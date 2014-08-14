@@ -5,12 +5,12 @@ Classes and utilities for working with object factories.
     BocoFactory = require 'boco-factory'
     assert = require 'assert'
 
-# Factory class
+# TypeFactory class
 
-Provides a basic implementation of the [factory pattern].
+Provides a basic implementation of the [factory pattern] where objects are constructed based off of their `type`.
 
-    Factory = BocoFactory.Factory
-    factory = new Factory()
+    TypeFactory = BocoFactory.TypeFactory
+    factory = new TypeFactory()
 
 ## Registering constructors
 
@@ -30,16 +30,6 @@ To register them with our factory, we call the `register` method with an collect
 
     factory.register User: User, Post: Post
 
-    assert factory.isRegistered 'User'
-    assert factory.isRegistered 'Post'
-    assert !factory.isRegistered 'Foo'
-
-You can retrieve any of the constructors by name using the `getConstructor` method.
-
-    assert.equal User, factory.getConstructor('User')
-    assert.equal Post, factory.getConstructor('Post')
-
-
 ## Constructing objects
 
 Now that we have registered some constructors, we can use our factory to create instances of those classes.
@@ -50,16 +40,17 @@ Now that we have registered some constructors, we can use our factory to create 
 
 ## Unregistered constructors
 
-    ConstructorNotRegistered = BocoFactory.Errors.ConstructorNotRegistered
+    ConstructorUndefined = BocoFactory.Errors.ConstructorUndefined
 
-If you attempt to construct an object using an unregistered name, a `ConstructorNotRegistered` error will be thrown.
+If you attempt to construct an object using an unregistered name, a `ConstructorUndefined` error will be thrown.
 
-    constructUnregistered = -> factory.construct 'Foo'
+    shouldThrow = ->
+      factory.construct 'Foo'
 
-    assert.throws constructUnregistered, (error) ->
-      assert error instanceof ConstructorNotRegistered
-      assert.equal "Foo", error.payload.name
-      return true
+    isCorrectError = (error) ->
+      error instanceof ConstructorUndefined
+
+    assert.throws shouldThrow, isCorrectError
 
 # Custom factories
 
@@ -67,13 +58,14 @@ You may want to extend the Factory class to perform custom construction of your 
 
 The `decorate` method is called *after* the object is constructed. By default, it does nothing. We can override it to set the identity on objects we construct.
 
-    class IdentifyingFactory extends Factory
+    class IdentifyingFactory extends TypeFactory
 
       generateId: ->
         @lastId = if @lastId? then @lastId + 1 else 1
 
       decorate: (object) ->
         object.id = @generateId() unless object.id?
+        return object
 
 Now, let's create an instance of this factory class and register our constructors.
 
