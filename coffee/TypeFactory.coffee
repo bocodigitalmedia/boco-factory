@@ -30,7 +30,10 @@ class TypeFactory
     constructor ?= @defaultConstructor
     return constructor
 
+  define: (name, constructor) ->
+    @constructors[name] = constructor
+
   register: (constructors = {}) ->
-    @constructors[name] = constructor for own name, constructor of constructors
+    @define name, constructor for own name,constructor of constructors
 
 module.exports = TypeFactory

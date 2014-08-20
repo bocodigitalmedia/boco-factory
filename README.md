@@ -70,7 +70,11 @@ The `decorate` method is called *after* the object is constructed. By default, i
 Now, let's create an instance of this factory class and register our constructors.
 
     factory = new IdentifyingFactory()
-    factory.register User: User, Post: Post
+    factory.register Post: Post
+
+You can define a single constructor by passing in the `typeName` and `constructor`:
+
+    factory.define "User", User
 
 If we construct a User and Post, they should now have an id assigned by our factory.
 
